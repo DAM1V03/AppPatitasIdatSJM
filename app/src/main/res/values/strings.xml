@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">AppPatitasIdatSJM</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_mascota">Mascotas Perdidas</string>
+    <string name="menu_voluntario">Voluntario</string>
+    <string name="valetusuario">Usuario</string>
+    <string name="valetpassword">Password</string>
+    <string name="valcbrecordar">¿Recordar Usuario?</string>
+    <string name="valbtningresar">INGRESAR</string>
+    <string name="valbtnregistrar">CREA TU CUENTA AQUÍ</string>
+    <string name="valetnombrereg">Nombres</string>
+    <string name="valetapellidoreg">Apellido</string>
+    <string name="valetusuarioreg">Usuario</string>
+    <string name="valetemailreg">Email</string>
+    <string name="valetcelulareg">Celular</string>
+    <string name="valetpasswordreg">Password</string>
+    <string name="valbtnguardarusu">REGISTRAR USUARIO</string>
+    <string name="valbtnirlogin">IR A LOGIN</string>
+    <string name="tituloregistro">REGISTRO DE USUARIO</string>
+    <string name="titulovoluntario">UNETE A NOSOTROS</string>
+    <string name="valterminos">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="valbtnregvoluntario">ÚNETE</string>
+    <string name="valcbaceptarterminos">Aceptar términos y condiciones.</string>
+</resources>

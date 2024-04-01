@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/mascotaFragment">
+    <fragment
+        android:id="@+id/mascotaFragment"
+        android:name="com.example.apppatitasidatsjm.view.fragment.MascotaFragment"
+        android:label="@string/menu_mascota"
+        tools:layout="@layout/fragment_mascota" />
+    <fragment
+        android:id="@+id/voluntarioFragment"
+        android:name="com.example.apppatitasidatsjm.view.fragment.VoluntarioFragment"
+        android:label="@string/menu_voluntario"
+        tools:layout="@layout/fragment_voluntario" />
+</navigation>
