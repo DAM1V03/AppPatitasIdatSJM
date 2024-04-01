@@ -1,4 +1,3 @@
 package com.example.apppatitasidatsjm.retrofit.request
 
-class LoginRequest {
-}
+data class LoginRequest (var usuario:String, var password:String)

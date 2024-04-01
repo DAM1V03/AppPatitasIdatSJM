@@ -1,4 +1,5 @@
 package com.example.apppatitasidatsjm.retrofit.request
 
-class VoluntarioRequest {
-}
+data class VoluntarioRequest(
+    var idpersona:Int
+)
