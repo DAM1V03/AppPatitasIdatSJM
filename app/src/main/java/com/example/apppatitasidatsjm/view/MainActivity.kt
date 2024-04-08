@@ -3,6 +3,7 @@ package com.example.apppatitasidatsjm.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         binding.btningresar.setOnClickListener(this)
         binding.btnregistrar.setOnClickListener(this)
+        binding.cbrecordar.setOnClickListener(this)
     }
     private fun obtenerDatosLogin(response: LoginResponse) {
         if(response.rpta){
@@ -84,6 +86,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btningresar -> autenticarUsuario()
             R.id.btnregistrar -> startActivity(Intent(applicationContext,
                 RegistroActivity::class.java))
+            R.id.cbrecordar -> setearValoresRecordar(vista)
+        }
+    }
+
+    private fun setearValoresRecordar(vista: View) {
+        if(vista is CheckBox){
+            val checkeo = vista.isChecked
+            if(!checkeo){
+                if(recordarDatosLogin()){
+                    SharedPreferencesManager().deletePreference("PREF_RECORDAR")
+                    personaViewModel.eliminar()
+                    binding.etusuario.isEnabled = true
+                    binding.etpassword.isEnabled = true
+                    binding.cbrecordar.text = getString(R.string.valcbaceptarterminos)
+                }
+            }
         }
     }
 
