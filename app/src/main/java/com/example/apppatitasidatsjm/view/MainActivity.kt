@@ -11,15 +11,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.apppatitasidatsjm.R
 import com.example.apppatitasidatsjm.databinding.ActivityMainBinding
+import com.example.apppatitasidatsjm.model.db.entity.PersonaEntity
 import com.example.apppatitasidatsjm.retrofit.response.LoginResponse
 import com.example.apppatitasidatsjm.util.AppMensaje
+import com.example.apppatitasidatsjm.util.SharedPreferencesManager
 import com.example.apppatitasidatsjm.util.TipoMensaje
 import com.example.apppatitasidatsjm.viewmodel.AuthViewModel
+import com.example.apppatitasidatsjm.viewmodel.PersonaViewModel
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var authViewModel: AuthViewModel
+    private lateinit var personaViewModel: PersonaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         authViewModel = ViewModelProvider(this)
             .get(AuthViewModel::class.java)
+        personaViewModel = ViewModelProvider(this)
+            .get(PersonaViewModel::class.java)
         authViewModel.loginResponse.observe(this, Observer {
             response -> obtenerDatosLogin(response!!)
         })
@@ -35,6 +41,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
     private fun obtenerDatosLogin(response: LoginResponse) {
         if(response.rpta){
+            val personaEntity = PersonaEntity(
+                response.idpersona.toInt(), response.nombres, response.apellidos,
+                response.email, response.celular, response.usuario, response.password,
+                response.esvoluntario
+            )
+            if(recordarDatosLogin()){
+                personaViewModel.actualizar(personaEntity)
+            }else{
+                personaViewModel.insertar(personaEntity)
+                if(binding.cbrecordar.isChecked){
+                    SharedPreferencesManager().setSomeBooleanValue("PREF_RECORDAR",
+                        true)
+                }
+            }
+
             startActivity(Intent(applicationContext, HomeActivity::class.java))
         }else{
             AppMensaje.enviarMensaje(binding.root, response.mensaje, TipoMensaje.ERROR)
@@ -56,5 +77,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnregistrar.isEnabled = false
         authViewModel.autenticarUsuario(binding.etusuario.text.toString(),
             binding.etpassword.text.toString())
+    }
+    private fun recordarDatosLogin(): Boolean{
+        return SharedPreferencesManager().getSomeBooleanValue("PREF_RECORDAR")
     }
 }
