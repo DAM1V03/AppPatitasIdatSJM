@@ -1,14 +1,15 @@
 package com.example.apppatitasidatsjm.util
 
 import android.app.Application
+import android.content.Context
 
 class MiApp : Application() {
-    companion object{
-        lateinit var instance: MiApp
-    }
-
-    override fun onCreate() {
-        super.onCreate()
+    init {
         instance = this
     }
+    companion object {
+        lateinit var instance: MiApp private set
+        val applicationContext: Context get() {return instance.applicationContext}
+    }
+
 }
