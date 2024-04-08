@@ -36,6 +36,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         authViewModel.loginResponse.observe(this, Observer {
             response -> obtenerDatosLogin(response!!)
         })
+        if(recordarDatosLogin()){
+            binding.cbrecordar.isChecked = true
+            binding.etusuario.isEnabled = false
+            binding.etpassword.isEnabled = false
+            binding.cbrecordar.text = "Quitar check para ingresar con otro usuario"
+            personaViewModel.obtener()
+                .observe(this, Observer { persona ->
+                    persona?.let {
+                        binding.etusuario.setText(persona.usuario)
+                        binding.etpassword.setText(persona.password)
+                    }
+                })
+        }else{
+            personaViewModel.eliminar()
+        }
         binding.btningresar.setOnClickListener(this)
         binding.btnregistrar.setOnClickListener(this)
     }
